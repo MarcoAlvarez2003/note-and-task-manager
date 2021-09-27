@@ -5,8 +5,8 @@ export namespace Util {
         }
     }
 
-    export class ReadLine {
-        static read(message: string, defect: string = ""): string {
+    export class Std {
+        static in(message: string, defect: string = ""): string {
             let data: string | null = "";
 
             while (!data) {

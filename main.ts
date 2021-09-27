@@ -46,35 +46,35 @@ console.log(
 
 while (running) {
     let name: string = "";
-    const input = Util.ReadLine.read(green("waiting for your orders:")) as keyof typeof Commands;
+    const input = Util.Std.in(green("waiting for your orders:")) as keyof typeof Commands;
 
     if (input === "create") {
-        Util.ReadLine.read(magenta("What are you going to create")) === "note"
+        Util.Std.in(magenta("What are you going to create")) === "note"
             ? storages.notes.save(factories.note.create())
             : storages.tasks.save(factories.task.create());
     } else if (input === "change") {
-        if (Util.ReadLine.read(magenta("What are you going to change")) === "note") {
-            name = Util.ReadLine.read(cyan("Write on behalf of the note to change"));
+        if (Util.Std.in(magenta("What are you going to change")) === "note") {
+            name = Util.Std.in(cyan("Write on behalf of the note to change"));
 
             storages.notes.exists(name)
                 ? factories.note.change(storages.notes.get(name) as Note)
                 : console.log(red(`note ${name} is not exist`));
         } else {
-            name = Util.ReadLine.read(cyan("Write on behalf of the task to change"));
+            name = Util.Std.in(cyan("Write on behalf of the task to change"));
 
             storages.tasks.exists(name)
                 ? factories.task.change(storages.tasks.get(name) as Task)
                 : console.log(red(`task ${name} is not exist`));
         }
     } else if (input === "remove") {
-        if (Util.ReadLine.read(magenta("what are you going to delete")) === "note") {
-            name = Util.ReadLine.read(cyan("Write the name of the note to delete"));
+        if (Util.Std.in(magenta("what are you going to delete")) === "note") {
+            name = Util.Std.in(cyan("Write the name of the note to delete"));
 
             storages.notes.exists(name)
                 ? storages.notes.remove(name)
                 : console.log(red(`note ${name} is non exist`));
         } else {
-            name = Util.ReadLine.read(cyan("Write the name of the task to delete"));
+            name = Util.Std.in(cyan("Write the name of the task to delete"));
 
             storages.tasks.exists(name)
                 ? storages.tasks.remove(name)
