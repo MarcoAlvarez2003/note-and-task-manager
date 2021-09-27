@@ -8,7 +8,7 @@ export class Virtual<Fact extends Identifiable> implements DataBase<Fact> {
     }
 
     exists(identifier: string): boolean {
-        return this.storage.some((fact) => fact.id == identifier || (fact as any).name == identifier);
+        return this.storage.some((fact) => fact.id == identifier || fact.name == identifier);
     }
 
     save(fact: Fact): void {
@@ -16,7 +16,7 @@ export class Virtual<Fact extends Identifiable> implements DataBase<Fact> {
     }
 
     get(identifier: string): Fact | undefined {
-        return this.storage.find((fact) => fact.id == identifier || (fact as any).name == identifier);
+        return this.storage.find((fact) => fact.id == identifier || fact.name == identifier);
     }
 
     remove(identifier: string): void {

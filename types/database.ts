@@ -1,5 +1,6 @@
 export interface Identifiable {
     id: string;
+    name: string;
 }
 
 export interface DataBase<Fact extends Identifiable> {
